@@ -23,7 +23,7 @@ public class Product {
 	private String name;
 	
 	@Min(0)
-	private String price;
+	private Float price;
 	
 	private String urlImage;
 	
@@ -33,7 +33,7 @@ public class Product {
 	@ManyToOne
 	private Buy purchase;
 
-	public Product(String name, String price, String urlImage, User owner) {
+	public Product(String name, Float price, String urlImage, User owner) {
 		super();
 		this.name = name;
 		this.price = price;
