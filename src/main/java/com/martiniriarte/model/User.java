@@ -2,6 +2,7 @@ package com.martiniriarte.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
@@ -42,6 +43,7 @@ public class User {
 	private Date dischargeDate;
 
 	@NotEmpty
+	@Column(unique = true)
 	private String email;
 	
 	@NotEmpty
