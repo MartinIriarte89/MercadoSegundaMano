@@ -9,6 +9,8 @@ import com.martiniriarte.model.Product;
 import com.martiniriarte.model.User;
 
 public interface ProductDAO extends JpaRepository<Product, Long> {
+	
+	List<Product> findByOwner(User user);
 
 	List<Product> findByPurchase(Buy purchase);
 	
