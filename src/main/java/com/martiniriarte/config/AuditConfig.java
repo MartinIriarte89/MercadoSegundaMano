@@ -4,7 +4,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
-import com.martiniriarte.upload.StorageProperties;
+import com.martiniriarte.util.upload.StorageProperties;
 
 @Configuration
 @EnableJpaAuditing // Para que las fechas se asignen automaticamente en la bbdd 

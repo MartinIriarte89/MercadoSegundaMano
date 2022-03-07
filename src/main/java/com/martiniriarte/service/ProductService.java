@@ -23,14 +23,15 @@ public class ProductService {
 	}
 
 	public void delete(long id) {
-		String urlImage = productDAO.findById(id).orElse(null).getUrlImage();
-		if (!urlImage.isEmpty()) {
-			storageService.delete(urlImage);
+		Product product = productDAO.findById(id).orElse(null);
+		if (product != null) {
+			storageService.delete(product.getUrlImage());
 		}
 		productDAO.deleteById(id);
 	}
 
 	public void delete(Product product) {
+		System.out.println(product);
 		if (!product.getUrlImage().isEmpty()) {
 			storageService.delete(product.getUrlImage());
 		}

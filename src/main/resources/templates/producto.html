@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
-<title>SecondHandMarket</title>
+<title>MercadodeSegundaMano</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -17,7 +17,7 @@
 
 	<div class="jumbotron">
 		<div class="container text-center">
-			<h1>Second-Hand-Market</h1>
+			<h1>Mercado de Segunda Mano</h1>
 		</div>
 	</div>
 
@@ -75,7 +75,7 @@
 				<div class="col-md-4">
 					<div class="text-center">
 						<img
-							th:src="${#strings.isEmpty(producto.owner.urlAvatar)} ? @{http://api.adorable.io/avatars/140/{email}.png(email=${producto.owner.email})} : ${producto.owner.urlAvatar}"
+							th:src="${#strings.isEmpty(producto.owner.urlAvatar)} ? @{https://robohash.org/{email}.png?set=set4&bgset=bg1&size=140x140(email=${producto.owner.email})} : ${producto.owner.urlAvatar}"
 							name="aboutme" width="140" height="140" class="img-circle">
 						<h5><span
 								th:text="${producto.owner.name + ' ' + producto.owner.lastName}"></span><br>

@@ -17,9 +17,9 @@ import org.springframework.util.FileSystemUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.martiniriarte.upload.StorageException;
-import com.martiniriarte.upload.StorageFileNotFoundException;
-import com.martiniriarte.upload.StorageProperties;
+import com.martiniriarte.util.upload.StorageException;
+import com.martiniriarte.util.upload.StorageFileNotFoundException;
+import com.martiniriarte.util.upload.StorageProperties;
 
 @Service
 public class FileSystemStorageService implements StorageService{

@@ -23,24 +23,27 @@ public class MercadoSegundaManoApplication {
 	@Bean
 	public CommandLineRunner initData(UserService userService, ProductService productService) {
 		return args -> {
-
-			User user = new User("Luis Miguel", "López Magaña", null, "luismi.lopez@openwebinars.net", "luismi");
+			
+			User user = new User("Luis Miguel", "López", null, "luismiguel.lopez@gmail.com", "1234");
 			user = userService.registrer(user);
 
-			User user2 = new User("Antonio", "García Martín", null, "antonio.garcia@openwebinars.net", "antonio");
+			User user2 = new User("Antonio", "García", null, "antonio.garcia@gmail.com", "1234");
 			user2 = userService.registrer(user2);
 
-			List<Product> listado = Arrays.asList(new Product("Bicicleta de montaña", 100.0f,
-					"https://www.decathlon.es/media/835/8350582/big_23c25284-2810-415d-8bcc-e6bebdb536fc.jpg", user),
-					new Product("Golf GTI Serie 2", 2500.0f,
-							"https://www.minicar.es/large/Volkswagen-Golf-GTi-G60-Serie-II-%281990%29-Norev-1%3A18-i22889.jpg",
+			List<Product> listado = Arrays.asList(
+					new Product("Bicicleta de montaña", 100.0f,
+							"https://pictures.ssg-service.com/179/1799374_original_1.jpg", user),
+					new Product("Samsung Galaxy S10", 300.0f,
+							"https://bitwares.net/wp-content/uploads/2020/06/618FTkMHQ3L._AC_SL1500_-1.jpg",
 							user),
 					new Product("Raqueta de tenis", 10.5f,
-							"https://imgredirect.milanuncios.com/fg/2311/04/tenis/Raqueta-tenis-de-segunda-mano-en-Madrid-231104755_1.jpg?VersionId=T9dPhTf.3ZWiAFjnB7CvGKsvbdfPLHht",
+							"https://www.mistertennis.com/images/2018-media/Babolat-Boost-Aero-Racchetta-Tennis-121199_B.jpg",
 							user),
-					new Product("Xbox One X", 425.0f, "https://images.vibbo.com/635x476/860/86038583196.jpg", user2),
-					new Product("Trípode flexible", 10.0f, "https://images.vibbo.com/635x476/860/86074256163.jpg",
+					new Product("Xbox One X", 425.0f,
+							"https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Microsoft-Xbox-One-S-Console-wController-L.jpg/2560px-Microsoft-Xbox-One-S-Console-wController-L.jpg",
 							user2),
+					new Product("Trípode flexible", 10.0f,
+							"https://http2.mlstatic.com/D_NQ_NP_985884-MLA33005572475_112019-O.webp", user2),
 					new Product("Iphone 7 128 GB", 350.0f,
 							"https://store.storeimages.cdn-apple.com/4667/as-images.apple.com/is/image/AppleInc/aos/published/images/i/ph/iphone7/rosegold/iphone7-rosegold-select-2016?wid=470&hei=556&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1472430205982",
 							user2));

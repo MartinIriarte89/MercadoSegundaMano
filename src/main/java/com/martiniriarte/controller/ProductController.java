@@ -2,9 +2,12 @@ package com.martiniriarte.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,12 +29,12 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/app")
 @RequiredArgsConstructor
 public class ProductController {
-	
+
 	private final ProductService productService;
 	private final UserService userService;
 	private final StorageService storageService;
 	private User user;
-	
+
 	@ModelAttribute("misproductos")
 	public List<Product> misProductos() {
 		String email = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -46,7 +49,7 @@ public class ProductController {
 
 		return "app/producto/lista";
 	}
-	
+
 	@GetMapping("/misproductos/{id}/eliminar")
 	public String eliminar(@PathVariable Long id) {
 		Product product = productService.findById(id);
@@ -54,23 +57,33 @@ public class ProductController {
 			productService.delete(product);
 		return "redirect:/app/misproductos";
 	}
-	
+
 	@GetMapping("/producto/nuevo")
 	public String nuevoProductoForm(Model model) {
 		model.addAttribute("producto", new Product());
 		return "app/producto/form";
 	}
-	
+
+	// Arreglar validacion
 	@PostMapping("/producto/nuevo/submit")
-	public String nuevoProductoSubmit(@ModelAttribute Product producto, @RequestParam("file") MultipartFile file) {		
+	public String nuevoProductoSubmit(@ModelAttribute @Valid Product producto, Errors errors,
+			@RequestParam("file") MultipartFile file, Model model) {
+
+		if (errors.hasErrors()) {
+			model.addAttribute("producto", producto);
+			return "app/producto/form";
+		}
+
 		if (!file.isEmpty()) {
 			String imagen = storageService.store(file);
-			producto.setUrlImage(MvcUriComponentsBuilder
-					.fromMethodName(FilesController.class, "serveFile", imagen).build().toUriString());
+			producto.setUrlImage(MvcUriComponentsBuilder.fromMethodName(FilesController.class, "serveFile", imagen)
+					.build().toUriString());
+		} else {
+			producto.setUrlImage("");
 		}
 		producto.setOwner(user);
 		productService.insert(producto);
 		return "redirect:/app/misproductos";
 	}
-	
+
 }

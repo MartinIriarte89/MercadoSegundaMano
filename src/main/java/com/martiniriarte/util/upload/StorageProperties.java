@@ -1,4 +1,4 @@
-package com.martiniriarte.upload;
+package com.martiniriarte.util.upload;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
