@@ -78,14 +78,14 @@
 
 				<div class="panel panel-default panel-producto">
 					<div class="panel-heading">
-						<span th:text="${producto.nombre}">NOMBRE DEL PRODUCTO</span> <a
-							th:if="${producto.compra == null}" data-toggle="modal"
+						<span th:text="${producto.name}">NOMBRE DEL PRODUCTO</span> <a
+							th:if="${producto.purchase == null}" data-toggle="modal"
 							data-target="#delete-modal" th:data-id="${producto.id}"
 							class="close" aria-label="close">&times;</a>
 					</div>
 					<div class="panel-body">
 						<img
-							th:src="${#strings.isEmpty(producto.imagen)} ? 'http://placehold.it/350x260' : ${producto.imagen}"
+							th:src="${#strings.isEmpty(producto.urlImage)} ? 'http://placehold.it/350x260' : ${producto.urlImage}"
 							class="img-responsive center-block" alt="Image"
 							style="height: 300px;">
 					</div>
@@ -93,14 +93,14 @@
 						<div class="row">
 							<div class="col-md-9 precio">
 								<span class="precio"
-									th:text="${#numbers.formatCurrency(producto.precio)}"></span>
+									th:text="${#numbers.formatCurrency(producto.price)}"></span>
 							</div>
 							<div class="col-md-3">
 
 								<h4>
-									<span th:if="${producto.compra != null} "
+									<span th:if="${producto.purchase != null} "
 										class="label label-success">Vendido</span> <span
-										th:unless="${producto.compra != null} "
+										th:unless="${producto.purchase != null} "
 										class="label label-info">Sin vender</span>
 								</h4>
 

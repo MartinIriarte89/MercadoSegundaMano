@@ -16,7 +16,7 @@
 
 	<div class="jumbotron">
 		<div class="container text-center">
-			<h1>Second-Hand-Market</h1>
+			<h1>Mercado de Segunda Mano</h1>
 		</div>
 	</div>
 
@@ -85,7 +85,7 @@
 				<tbody>
 					<tr th:each="compra : ${mis_compras}">
 						<td><span th:text="${compra.id}">1</span>
-						<td><span th:text="${#dates.format(compra.fechaCompra,'dd/MMM/yyyy HH:mm')}"></span></td>
+						<td><span th:text="${#dates.format(compra.dateOfPurchase,'dd/MMM/yyyy HH:mm')}"></span></td>
 						<td><a th:href="@{/app/compra/factura/{id}(id=${compra.id})}" class="btn btn-info">Ver factura</a></td>
 					</tr>
 				</tbody>

@@ -88,21 +88,21 @@
 								<div class="media">
 									<img
 										class="thumbnail pull-left media-object"
-										th:src="${#strings.isEmpty(producto.imagen)} ? 'https://placehold.it/150x150?text=SIN%20IMAGEN' : ${producto.imagen}"
+										th:src="${#strings.isEmpty(producto.urlImage)} ? 'https://placehold.it/150x150?text=SIN%20IMAGEN' : ${producto.urlImage}"
 										style="width: 150px;">									
 									<div class="media-body">
 										<h4 class="media-heading">&nbsp;
-											<span th:text="${producto.nombre}">Nombre del producto</span>
+											<span th:text="${producto.name}">Nombre del producto</span>
 										</h4>
 										<h5 class="media-heading">&nbsp;
-											by <span th:text="${producto.propietario.email}">pepe@pepe.com</span>
+											by <span th:text="${producto.owner.email}">pepe@pepe.com</span>
 										</h5>
 										
 									</div>
 								</div>
 							</td>
 
-							<td class="col-md-1 text-center"><strong th:text="${#numbers.formatCurrency(producto.precio)}"></strong></td>
+							<td class="col-md-1 text-center"><strong th:text="${#numbers.formatCurrency(producto.price)}"></strong></td>
 							<td class="col-md-1">
 								<a th:href="@{/app/carrito/eliminar/{id}(id=${producto.id})}" class="btn btn-danger">
 									<span class="glyphicon glyphicon-remove"></span> Eliminar

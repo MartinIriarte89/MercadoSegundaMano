@@ -16,16 +16,24 @@ import lombok.RequiredArgsConstructor;
 public class ProductService {
 
 	private final ProductDAO productDAO;
+	private final StorageService storageService;
 
 	public Product insert(Product product) {
 		return productDAO.save(product);
 	}
 
 	public void delete(long id) {
+		String urlImage = productDAO.findById(id).orElse(null).getUrlImage();
+		if (!urlImage.isEmpty()) {
+			storageService.delete(urlImage);
+		}
 		productDAO.deleteById(id);
 	}
 
 	public void delete(Product product) {
+		if (!product.getUrlImage().isEmpty()) {
+			storageService.delete(product.getUrlImage());
+		}
 		productDAO.delete(product);
 	}
 
